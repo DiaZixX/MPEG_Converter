@@ -15,6 +15,31 @@ ui nextbits(bslbf* bitstream, int n){
     return ret;
 }
 
+bool check_horizontal_size(uimsbf h_size){
+    /* Return true if the vertical size is a multiple of 4096 */
+    return !(h_size % 4096);
+}
+
+bool check_vertical_size(uimsbf v_size){
+    /* Return true if the vertical size is a multiple of 4096 */
+    return !(v_size % 4096);
+}
+
+void test_check_size(){
+    if (check_horizontal_size(4096)) {
+        printf("True\n");
+    }
+    if (!check_horizontal_size(4097)) {
+        printf("False\n");
+    }
+    if (check_vertical_size(4096)) {
+        printf("True\n");
+    }
+    if (!check_vertical_size(4097)) {
+        printf("False\n");
+    }
+}
+
 void test_next_bits(){
     bslbf* stream = malloc(sizeof(bslbf));
     stream->data = "101010111101000110111001";
@@ -28,6 +53,8 @@ void test_next_bits(){
 
 int main(int argc, char* argv[]){
     test_next_bits();
+    printf("\n\n");
+    test_check_size();
     
     return EXIT_SUCCESS;
 }

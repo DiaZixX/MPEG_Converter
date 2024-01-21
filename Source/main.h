@@ -7,6 +7,10 @@
 #include <stdbool.h>
 #include <string.h>
 
+#define SEQUENCE_END_CODE "00000000000000000000000110110111"  // 0x000001b7
+#define SEQUENCE_HEADER_CODE "00000000000000000000000110110011" // 0x000001b3
+
+
 //Custom types
 typedef unsigned int ui;
 
