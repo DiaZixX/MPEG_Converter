@@ -1,0 +1,5 @@
+# Ignore the executable 
+mpeg
+
+# Ignore all files in the bin directory 
+Bin/
