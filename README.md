@@ -10,10 +10,10 @@ If you want to clean the .o files you have created and the executable, go to the
 
 ## Progression
 
-Implemented functions of the doc :
-    - bytealigned()
-    - nextbits()
-    - next_start_code()
+Implemented functions of the doc :\
+    - bytealigned()\
+    - nextbits()\
+    - next_start_code()\
 
 Useful implemented functions :
     - eat_bitstream()
