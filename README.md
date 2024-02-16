@@ -11,7 +11,7 @@ If you want to clean the .o files you have created and the executable, go to the
 ## Progression
 
 Implemented functions of the doc :\
-    * bytealigned()\
+&nbsp;    * bytealigned()\
     * nextbits()\
     * next_start_code()\
 
