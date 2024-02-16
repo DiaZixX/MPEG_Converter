@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <assert.h>
 #include <string.h>
 
 #define SEQUENCE_END_CODE "00000000000000000000000110110111"  // 0x000001b7
