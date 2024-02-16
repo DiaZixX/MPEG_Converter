@@ -11,16 +11,16 @@ If you want to clean the .o files you have created and the executable, go to the
 ## Progression
 
 Implemented functions of the doc :\
-    - bytealigned()\
-    - nextbits()\
-    - next_start_code()\
+    * bytealigned()\
+    * nextbits()\
+    * next_start_code()\
 
-Useful implemented functions :
-    - eat_bitstream()
+Useful implemented functions :\
+    * eat_bitstream()\
 
-Next to do : 
-    - Start code values
-    - video_sequence()
-            -> sequence_header()
-            -> sequence_extension()
-            -> ...
+Next to do :\
+    * Start code values\
+    * video_sequence()\
+            -> sequence_header()\
+            -> sequence_extension()\
+            -> ...\
