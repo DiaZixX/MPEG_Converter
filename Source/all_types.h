@@ -17,7 +17,7 @@ typedef enum {
     PICTURE_START_CODE   = 0x00,
     SLICE_START_CODE_B   = 0x01,
     SLICE_START_CODE_E   = 0xaf,
-    USER_DATA_START_CODE = 0xb2,
+    USER_DATA_START_CODE = 0x000001b2,
     SEQUENCE_HEADER_CODE = 0xb3,
     SEQUENCE_ERROR_CODE  = 0xb4,
     EXTENSION_START_CODE = 0xb5,
@@ -39,7 +39,7 @@ typedef struct bslbf{
 
 typedef unsigned int uimsbf;
 typedef signed int simsbf;
-typedef int vlclbf;  //Je suis pas sur pour celui la
+typedef int vlclbf;  
 
 
 

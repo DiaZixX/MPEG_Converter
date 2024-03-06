@@ -1,8 +1,6 @@
 #include "main.h"
 #include "bench.h"
 
-char* bitstream = "00000001";
-
 /* Convert bit string into hexadecimal value*/
 ui string_to_hex(char* bit_string){
     return (ui)strtol(bit_string, NULL, 2);
@@ -21,6 +19,10 @@ void eat_bitstream(bslbf* bitstream, char* bit_string){
         bitstream->bit_index -= 8;
         bitstream->byte_index ++;
     }
+}
+
+char* readnbits(bslbf* bitstream, int n){
+
 }
 
 /* Check if the bit_string contains the next bits to be read */
@@ -46,6 +48,16 @@ void next_start_code(bslbf* bitstream){
     while (nextbits(bitstream, "000000000000000000000001")){
         eat_bitstream(bitstream, "00000000");
     }
+}
+
+void user_data(bslbf* bitstream){
+    char* token[32];
+    hex_to_string(USER_DATA_START_CODE, token);
+    eat_bitstream(bitstream, token);
+    while (nextbits(bitstream, "000000000000000000000001")){
+
+    }
+    next_start_code(bitstream);
 }
 
 /* Return true if the vertical size is a multiple of 4096 */
