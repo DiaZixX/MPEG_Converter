@@ -64,8 +64,26 @@ void next_start_code(bslbf* bitstream){
     }
 }
 
+void extension_and_user_data(bslbf* bitstream, int i){
+    while (nextbits(bitstream, hex_to_string(EXTENSION_START_CODE, LENGTH_SCV)) ||
+           nextbits(bitstream, hex_to_string(USER_DATA_START_CODE, LENGTH_SCV))){
+        if (i != 1){
+            if (nextbits(bitstream, hex_to_string(EXTENSION_START_CODE, LENGTH_SCV))){
+                extension_data(bitstream, i);
+            }
+        }
+        if (nextbits(bitstream, hex_to_string(USER_DATA_START_CODE, LENGTH_SCV))){
+            user_data(bitstream);
+        }
+    }
+}
+
+void extension_data(bslbf* bitstream, int i){
+    
+}
+
 void user_data(bslbf* bitstream){
-    char* token = hex_to_string(USER_DATA_START_CODE, 8);
+    char* token = hex_to_string(USER_DATA_START_CODE, LENGTH_SCV);
     eat_bitstream(bitstream, token);
     free(token);
     while (!nextbits(bitstream, "000000000000000000000001")){
@@ -87,13 +105,13 @@ bool check_vertical_size(uimsbf v_size){
 }
 
 int main(int argc, char* argv[]){
-    test_next_bits();
-    printf("\n\n");
-    test_check_size();
-    printf("\n\n");
-    test_string_hex_converter();
-    printf("\n\n");
-    test_user_data();
+    //test_next_bits();
+    //printf("\n\n");
+    //test_check_size();
+    //printf("\n\n");
+    //test_string_hex_converter();
+    //printf("\n\n");
+    //test_user_data();
     
     return EXIT_SUCCESS;
 }
