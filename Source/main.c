@@ -3,9 +3,14 @@
 
 char* bitstream = "00000001";
 
-/* Convert bit string into 64bits hexadecimal value*/
+/* Convert bit string into hexadecimal value*/
 ui string_to_hex(char* bit_string){
-    return (ui)strtol(bit_string, NULL, 16);
+    return (ui)strtol(bit_string, NULL, 2);
+}
+
+/* Convert hexadecimal value into bit string */
+void hex_to_string(ui hex, char* s){
+    sprintf(s, "%lx", hex);
 }
 
 /* Literally eat the next bits*/
@@ -57,6 +62,8 @@ int main(int argc, char* argv[]){
     test_next_bits();
     printf("\n\n");
     test_check_size();
+    printf("\n\n");
+    test_string_hex_converter();
     
     return EXIT_SUCCESS;
 }

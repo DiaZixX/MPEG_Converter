@@ -30,3 +30,13 @@ void test_next_bits(){
         printf("BAD\n");
     }
 }
+
+void test_string_hex_converter(){
+    printf("<=====[TEST OF HEX/STRING CONVERTER]=====>\n");
+    char* test1 = "00011101001011110000"; //1d2f0
+    ui res1 = string_to_hex(test1);  
+    printf("%lx\n", res1);
+    char res2[64] = "";
+    hex_to_string(res1, res2);
+    printf("%s\n", res2);
+}
