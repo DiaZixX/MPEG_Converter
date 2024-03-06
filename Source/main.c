@@ -3,8 +3,13 @@
 
 char* bitstream = "00000001";
 
+/* Convert bit string into 64bits hexadecimal value*/
+ui string_to_hex(char* bit_string){
+    return (ui)strtol(bit_string, NULL, 16);
+}
+
+/* Literally eat the next bits*/
 void eat_bitstream(bslbf* bitstream, char* bit_string){
-    /* Literally eat the next */
     assert(nextbits(bitstream, bit_string));
     bitstream->bit_index += strlen(bit_string);
     while (bitstream->bit_index > 7){
@@ -13,8 +18,8 @@ void eat_bitstream(bslbf* bitstream, char* bit_string){
     }
 }
 
+/* Check if the bit_string contains the next bits to be read */
 ui nextbits(bslbf* bitstream, char* bit_string){
-    /* Check if the bit_string contains the next bits to be read */
     int length = strlen(bit_string);
     char* sub_string = malloc(length*sizeof(char));
     strncpy(sub_string, (bitstream->data)+((bitstream->byte_index*8)+bitstream->bit_index), length);
@@ -23,13 +28,13 @@ ui nextbits(bslbf* bitstream, char* bit_string){
     return ret;  
 }
 
+/* Check if the next bit is the first one of a byte */
 bool bytealigned(bslbf* bitstream){
-    /* Check if the next bit is the first one of a byte */
     return bitstream->bit_index == 7;
 }
 
+/* Removes the zero bit stuffing and locates next start code */
 void next_start_code(bslbf* bitstream){
-    /* Removes the zero bit stuffing and locates next start code */
     while (!bytealigned(bitstream)){
         eat_bitstream(bitstream, "0");
     }
@@ -38,13 +43,13 @@ void next_start_code(bslbf* bitstream){
     }
 }
 
+/* Return true if the vertical size is a multiple of 4096 */
 bool check_horizontal_size(uimsbf h_size){
-    /* Return true if the vertical size is a multiple of 4096 */
     return !(h_size % 4096);
 }
 
+/* Return true if the vertical size is a multiple of 4096 */
 bool check_vertical_size(uimsbf v_size){
-    /* Return true if the vertical size is a multiple of 4096 */
     return !(v_size % 4096);
 }
 
