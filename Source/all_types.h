@@ -7,7 +7,6 @@
 #include <stdbool.h>
 #include <assert.h>
 #include <string.h>
-#include <stdint.h>
 
 //#define SEQUENCE_END_CODE "00000000000000000000000110110111"  // 0x000001b7
 //#define SEQUENCE_HEADER_CODE "00000000000000000000000110110011" // 0x000001b3
@@ -17,7 +16,7 @@ typedef enum {
     PICTURE_START_CODE   = 0x00,
     SLICE_START_CODE_B   = 0x01,
     SLICE_START_CODE_E   = 0xaf,
-    USER_DATA_START_CODE = 0x000001b2,
+    USER_DATA_START_CODE = 0xb2,
     SEQUENCE_HEADER_CODE = 0xb3,
     SEQUENCE_ERROR_CODE  = 0xb4,
     EXTENSION_START_CODE = 0xb5,
@@ -28,7 +27,7 @@ typedef enum {
 } START_CODE_VALUES;
 
 //Custom types
-typedef uint64_t ui;
+typedef unsigned int ui;
 
 //Types defined in the documentation
 typedef struct bslbf{
